@@ -1,7 +1,6 @@
 const fs = require('fs');
 const express = require('express');
 const morgan = require('morgan');
-const { STATUS_CODES } = require('http');
 
 const app = express();
 
@@ -115,51 +114,6 @@ const deleteTour = (req, res) => {
         data: {
             tour: null
         }
-    });
-}
-
-const getAllUsers = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const getUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const createUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const updateUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const deleteUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
     });
 }
 

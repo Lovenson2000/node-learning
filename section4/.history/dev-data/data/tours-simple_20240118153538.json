@@ -211,10 +211,5 @@
         "name": "Natours",
         "duration": 10,
         "difficulty": "easy"
-    },
-    {
-        "id": 10,
-        "name": "New Natour Tour",
-        "duration": 10
     }
 ]

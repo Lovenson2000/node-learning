@@ -1,7 +1,6 @@
 const fs = require('fs');
 const express = require('express');
 const morgan = require('morgan');
-const { STATUS_CODES } = require('http');
 
 const app = express();
 
@@ -118,60 +117,14 @@ const deleteTour = (req, res) => {
     });
 }
 
-const getAllUsers = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const getUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const createUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const updateUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const deleteUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
 /************** ROUTES ****************/
+
+//Tours Routes
+
+app.use('/api/v1/tours', tourRouter);
 
 const tourRouter = express.Router();
 const userRouter = express.Router();
-
-app.use('/api/v1/tours', tourRouter);
-app.use('/api/v1/users', userRouter);
-
-//Tours Routes
 
 tourRouter
     .route('/')
@@ -187,12 +140,12 @@ tourRouter
 //Users Routes
 
 userRouter
-    .route('/')
+    .route('/api/v1/users')
     .get(getAllUsers)
     .post(createUser);
 
 userRouter
-    .route('/:id')
+    .route('/api/v1/users/:id')
     .get(getUser)
     .patch(updateUser)
     .delete(deleteUser);

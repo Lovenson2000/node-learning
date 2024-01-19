@@ -1,12 +1,11 @@
 const fs = require('fs');
 const express = require('express');
 const morgan = require('morgan');
-const { STATUS_CODES } = require('http');
 
 const app = express();
 
-/************** MIDDLEWARES ****************/
-app.use(morgan('dev'));
+/************** MIDDLEWARE ****************/
+
 app.use(express.json()); //middleware
 
 app.use((req, res, next) => {
@@ -118,90 +117,23 @@ const deleteTour = (req, res) => {
     });
 }
 
-const getAllUsers = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
+// app.get('/api/v1/tours', getAllTours);
+// app.get('/api/v1/tours/:id', getTour);
+// app.post('/api/v1/tours', createTour);
+// app.patch('/api/v1/tours/:id', updateTour);
+// app.delete('/api/v1/tours/:id', deleteTour);
 
-const getUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const createUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const updateUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-const deleteUser = (req, res) => {
-    const statusCode = 500;
-    res.status(statusCode)
-    res.json({
-        status: 'error',
-        message: `${statusCode} Server Error`
-    });
-}
-
-/************** ROUTES ****************/
-
-const tourRouter = express.Router();
-const userRouter = express.Router();
-
-app.use('/api/v1/tours', tourRouter);
-app.use('/api/v1/users', userRouter);
-
-//Tours Routes
-
-tourRouter
-    .route('/')
+app
+    .route('/api/v1/tours')
     .get(getAllTours)
     .post(createTour);
 
-tourRouter
-    .route('/:id')
+app
+    .route('/api/v1/tours/:id')
     .get(getTour)
     .patch(updateTour)
     .delete(deleteTour);
 
-//Users Routes
-
-userRouter
-    .route('/')
-    .get(getAllUsers)
-    .post(createUser);
-
-userRouter
-    .route('/:id')
-    .get(getUser)
-    .patch(updateUser)
-    .delete(deleteUser);
-
-
-
-
-
-/************** START SERVER ****************/
 const port = 3000;
 app.listen(port, () => {
     console.log(`Server listening on port${port}`);
