@@ -6,7 +6,7 @@ const tours = JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/data/tours-si
 
 exports.checkID = (req, res, next, val) => {
     console.log(`Tour id is:${val}`);
-
+    
     const id = req.params.id * 1;
 
     if (id > tours.length) {
@@ -34,6 +34,13 @@ exports.getAllTours = (req, res) => {
 exports.getTour = (req, res) => {
     const id = req.params.id * 1;
     const tour = tours.find(tour => tour.id === id);
+
+    if (!tour) {
+        return res.status(404).json({
+            status: 'failed',
+            message: 'Invalid ID'
+        });
+    }
 
     res.status(200);
     res.json({
