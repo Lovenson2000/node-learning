@@ -25,6 +25,7 @@ exports.checkBody = (req, res, next) => {
         })
     }
     next();
+
 }
 
 exports.getAllTours = (req, res) => {
