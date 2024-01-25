@@ -14,6 +14,20 @@ mongoose
     useFindAndModify: false
 }).then(() => console.log('DB Connection successful'));
 
+
+const Tour = mongoose.model('Tour', tourSchema);
+
+const testTour = new Tour({
+    name: "The Park Camper",
+    price: 997
+});
+testTour.save().then(doc => {
+    console.log(doc);
+}).catch(error => {
+    console.log('ERROR', error);
+})
+
+
 /************** START SERVER ****************/
 const port = process.env.PORT;
 app.listen(port, () => {

@@ -14,6 +14,22 @@ mongoose
     useFindAndModify: false
 }).then(() => console.log('DB Connection successful'));
 
+const tourSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: ['true', 'A name is required'],
+        unique: true
+    },
+    rating: {
+        type: Number,
+        default: 4.5
+    },
+    price: {
+        type: Number,
+        required: ['true', 'A price is required']
+    },
+});
+
 /************** START SERVER ****************/
 const port = process.env.PORT;
 app.listen(port, () => {
